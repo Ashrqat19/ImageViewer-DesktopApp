@@ -27,12 +27,15 @@ namespace Desktop_App
         {
             Color mainText = Color.FromArgb(70, 175, 255);
             Color mainBack = Color.FromArgb(45, 55, 70);
-            //   Color secondryBtnColor = Color.FromArgb(64, 255, 106);
+          //  Color secondryBtnColor = Color.FromArgb(255, 79, 79); 
             Color secondryBtnColor = Color.FromArgb(26, 251, 170);
             InitializeComponent();
-
+            Color whiteTxt = Color.FromKnownColor(KnownColor.White);
             this.BackColor = Color.FromArgb(30, 40, 50);
             //  this.ForeColor = Color.FromArgb(85, 100, 25);
+
+
+            colorBtn(exitbtn, Color.FromArgb(255, 86, 86), whiteTxt);
 
             colorBtn(singleBtn, secondryBtnColor, BackColor);
             colorBtn(slideBtn, secondryBtnColor, BackColor);
@@ -40,11 +43,10 @@ namespace Desktop_App
 
             colorBtn(next, secondryBtnColor, BackColor);
             colorBtn(prev, secondryBtnColor, BackColor);
-
-
-            colorBtn(uploadBtn, mainText, Color.FromKnownColor(KnownColor.White));
-            colorBtn(startBtn, mainText, Color.FromKnownColor(KnownColor.White));
-            colorBtn(stopBtn, mainText, Color.FromKnownColor(KnownColor.White));
+          
+            colorBtn(uploadBtn, mainText, whiteTxt);
+            colorBtn(startBtn, Color.FromArgb(60, 85, 111), whiteTxt);
+            colorBtn(stopBtn, Color.FromArgb(60, 85, 111), whiteTxt);
 
             label1.ForeColor = mainText;
             label2.ForeColor = mainText;
@@ -53,12 +55,13 @@ namespace Desktop_App
             panel1.BackColor = mainBack;
             panel2.BackColor = mainBack;
             panel3.BackColor = Color.FromArgb(30, 40, 50);
-            panel4.BackColor = Color.FromArgb(30, 40, 50);
+     //       panel4.BackColor = Color.FromArgb(30, 40, 50);
             toolStripLabel1.BackColor = Color.FromArgb(30, 40, 50);
             nameStatusStrip.BackColor = Color.FromArgb(30, 40, 50);
             toolStripLabel1.ForeColor = mainText;
             exitToolStripMenuItem.BackColor = Color.FromArgb(255, 86, 86);
-            exitToolStripMenuItem.ForeColor = Color.FromKnownColor(KnownColor.White);
+            exitToolStripMenuItem.ForeColor = whiteTxt;
+
         }
 
         private void loadSelectPath()
@@ -166,29 +169,24 @@ namespace Desktop_App
             loadImgtimer.Stop();
             imgBox.Visible = false;
             panelMulti.Visible = true;
-
+        
             int maxHeight = -1;
-            int x = 40, y = 40;
+            int x = -5, y = 0;
             for (int i = 0; i < selectedPath.Count; i++)
             {
                 PictureBox pic = new PictureBox();
                 pic.ImageLocation = selectedPath[i];
                 pic.Location = new Point(x, y);
                 pic.SizeMode = PictureBoxSizeMode.Zoom;
-                x += pic.Width + 10;
+                x += pic.Width + 5;
                 maxHeight = Math.Max(pic.Height, maxHeight);
                 if (x > panelMulti.Width)
                 {
-                    x = 40;
+                    x = -5;
                     y += maxHeight + 20;
                 }
-
                 panelMulti.Controls.Add(pic);
             }
-
-
-
-
 
         }
 
@@ -215,7 +213,7 @@ namespace Desktop_App
 
         private void next_Click(object sender, EventArgs e)
         {
-
+            nameStatusStrip.Visible = false;
 
             Button btnSender = (Button)sender;
             if (btnSender == next)
@@ -260,17 +258,22 @@ namespace Desktop_App
         private void onOffSlider_Click(object sender, EventArgs e)
         {
             Button btnSender = (Button)sender;
-            if (btnSender == startBtn)
-            {
-                panelMulti.Visible = false;
+               panelMulti.Visible = false;
                 imgBox.Visible = true;
+             if (btnSender == startBtn)
+            {
                 loadImgtimer.Start();
             }
-            else if (btnSender == stopBtn) { }
-            loadImgtimer.Stop();
+            else if (btnSender == stopBtn) {
+                loadImgtimer.Stop();
+            }
 
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
