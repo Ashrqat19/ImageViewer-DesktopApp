@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 namespace Desktop_App
 {
-   
+
     public partial class Form1 : Form
     {
 
@@ -25,28 +25,26 @@ namespace Desktop_App
         int indxOfNext = 0;
         public Form1()
         {
+            InitializeComponent();
+
             Color mainText = Color.FromArgb(70, 175, 255);
             Color mainBack = Color.FromArgb(45, 55, 70);
-          //  Color secondryBtnColor = Color.FromArgb(255, 79, 79); 
             Color secondryBtnColor = Color.FromArgb(26, 251, 170);
-            InitializeComponent();
             Color whiteTxt = Color.FromKnownColor(KnownColor.White);
+
             this.BackColor = Color.FromArgb(30, 40, 50);
-            //  this.ForeColor = Color.FromArgb(85, 100, 25);
-
-
             colorBtn(exitbtn, Color.FromArgb(255, 86, 86), whiteTxt);
 
             colorBtn(singleBtn, secondryBtnColor, BackColor);
             colorBtn(slideBtn, secondryBtnColor, BackColor);
             colorBtn(multiBtn, secondryBtnColor, BackColor);
 
-            colorBtn(next, secondryBtnColor, BackColor);
-            colorBtn(prev, secondryBtnColor, BackColor);
-          
+            colorBtn(next, Color.FromArgb(60, 85, 111), BackColor);
+            colorBtn(prev, Color.FromArgb(60, 85, 111), BackColor);
+
             colorBtn(uploadBtn, mainText, whiteTxt);
-            colorBtn(startBtn, Color.FromArgb(60, 85, 111), whiteTxt);
-            colorBtn(stopBtn, Color.FromArgb(60, 85, 111), whiteTxt);
+            colorBtn(startBtn, secondryBtnColor, whiteTxt);
+            colorBtn(stopBtn, secondryBtnColor, whiteTxt);
 
             label1.ForeColor = mainText;
             label2.ForeColor = mainText;
@@ -55,7 +53,6 @@ namespace Desktop_App
             panel1.BackColor = mainBack;
             panel2.BackColor = mainBack;
             panel3.BackColor = Color.FromArgb(30, 40, 50);
-     //       panel4.BackColor = Color.FromArgb(30, 40, 50);
             toolStripLabel1.BackColor = Color.FromArgb(30, 40, 50);
             nameStatusStrip.BackColor = Color.FromArgb(30, 40, 50);
             toolStripLabel1.ForeColor = mainText;
@@ -169,7 +166,7 @@ namespace Desktop_App
             loadImgtimer.Stop();
             imgBox.Visible = false;
             panelMulti.Visible = true;
-        
+
             int maxHeight = -1;
             int x = -5, y = 0;
             for (int i = 0; i < selectedPath.Count; i++)
@@ -251,20 +248,20 @@ namespace Desktop_App
                     }
                 }
             }
-            //some code here
-
+ 
         }
 
         private void onOffSlider_Click(object sender, EventArgs e)
         {
             Button btnSender = (Button)sender;
-               panelMulti.Visible = false;
-                imgBox.Visible = true;
-             if (btnSender == startBtn)
+            panelMulti.Visible = false;
+            imgBox.Visible = true;
+            if (btnSender == startBtn)
             {
                 loadImgtimer.Start();
             }
-            else if (btnSender == stopBtn) {
+            else if (btnSender == stopBtn)
+            {
                 loadImgtimer.Stop();
             }
 
