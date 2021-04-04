@@ -43,6 +43,11 @@
             this.imgBox = new System.Windows.Forms.PictureBox();
             this.loadImgtimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.stopBtn = new System.Windows.Forms.Button();
+            this.MulitpleBtn = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
+            this.next = new System.Windows.Forms.Button();
+            this.prev = new System.Windows.Forms.Button();
             this.checkBoxSelectAll = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,14 +60,9 @@
             this.slideBtn = new System.Windows.Forms.Button();
             this.multiBtn = new System.Windows.Forms.Button();
             this.singleBtn = new System.Windows.Forms.Button();
-            this.stopBtn = new System.Windows.Forms.Button();
-            this.startBtn = new System.Windows.Forms.Button();
             this.clearCheck = new System.Windows.Forms.CheckBox();
-            this.prev = new System.Windows.Forms.Button();
-            this.next = new System.Windows.Forms.Button();
             this.clearPanelCheck = new System.Windows.Forms.CheckBox();
             this.imgList = new System.Windows.Forms.ListBox();
-            this.exitbtn = new System.Windows.Forms.Button();
             this.modeContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.panel1.SuspendLayout();
@@ -122,7 +122,7 @@
             // 
             this.uploadBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.uploadBtn.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uploadBtn.Location = new System.Drawing.Point(33, 772);
+            this.uploadBtn.Location = new System.Drawing.Point(33, 749);
             this.uploadBtn.Name = "uploadBtn";
             this.uploadBtn.Size = new System.Drawing.Size(270, 51);
             this.uploadBtn.TabIndex = 1;
@@ -139,7 +139,7 @@
             // 
             // imgBox
             // 
-            this.imgBox.Location = new System.Drawing.Point(332, 199);
+            this.imgBox.Location = new System.Drawing.Point(332, 176);
             this.imgBox.Name = "imgBox";
             this.imgBox.Size = new System.Drawing.Size(848, 623);
             this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -155,6 +155,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.LemonChiffon;
             this.panel1.Controls.Add(this.stopBtn);
+            this.panel1.Controls.Add(this.MulitpleBtn);
             this.panel1.Controls.Add(this.startBtn);
             this.panel1.Controls.Add(this.next);
             this.panel1.Controls.Add(this.prev);
@@ -164,11 +165,65 @@
             this.panel1.Size = new System.Drawing.Size(1280, 50);
             this.panel1.TabIndex = 5;
             // 
+            // stopBtn
+            // 
+            this.stopBtn.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopBtn.Location = new System.Drawing.Point(911, 0);
+            this.stopBtn.Name = "stopBtn";
+            this.stopBtn.Size = new System.Drawing.Size(284, 50);
+            this.stopBtn.TabIndex = 0;
+            this.stopBtn.Text = "Stop Show";
+            this.stopBtn.UseVisualStyleBackColor = true;
+            this.stopBtn.Click += new System.EventHandler(this.onOffSlider_Click);
+            // 
+            // MulitpleBtn
+            // 
+            this.MulitpleBtn.Location = new System.Drawing.Point(666, 0);
+            this.MulitpleBtn.Name = "MulitpleBtn";
+            this.MulitpleBtn.Size = new System.Drawing.Size(193, 50);
+            this.MulitpleBtn.TabIndex = 10;
+            this.MulitpleBtn.Text = "View All";
+            this.MulitpleBtn.UseVisualStyleBackColor = true;
+            this.MulitpleBtn.Click += new System.EventHandler(this.multipleShowToolStripMenuItem_Click);
+            // 
+            // startBtn
+            // 
+            this.startBtn.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startBtn.Location = new System.Drawing.Point(331, 0);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(284, 50);
+            this.startBtn.TabIndex = 0;
+            this.startBtn.Text = "Start Show";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.onOffSlider_Click);
+            // 
+            // next
+            // 
+            this.next.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.next.Location = new System.Drawing.Point(843, 0);
+            this.next.Name = "next";
+            this.next.Size = new System.Drawing.Size(85, 50);
+            this.next.TabIndex = 9;
+            this.next.Text = ">>";
+            this.next.UseVisualStyleBackColor = true;
+            this.next.Click += new System.EventHandler(this.next_Click);
+            // 
+            // prev
+            // 
+            this.prev.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prev.Location = new System.Drawing.Point(597, 0);
+            this.prev.Name = "prev";
+            this.prev.Size = new System.Drawing.Size(85, 50);
+            this.prev.TabIndex = 9;
+            this.prev.Text = "<<";
+            this.prev.UseVisualStyleBackColor = true;
+            this.prev.Click += new System.EventHandler(this.next_Click);
+            // 
             // checkBoxSelectAll
             // 
             this.checkBoxSelectAll.AutoSize = true;
             this.checkBoxSelectAll.ForeColor = System.Drawing.Color.White;
-            this.checkBoxSelectAll.Location = new System.Drawing.Point(33, 172);
+            this.checkBoxSelectAll.Location = new System.Drawing.Point(33, 149);
             this.checkBoxSelectAll.Name = "checkBoxSelectAll";
             this.checkBoxSelectAll.Size = new System.Drawing.Size(82, 21);
             this.checkBoxSelectAll.TabIndex = 6;
@@ -221,20 +276,20 @@
             // panelMulti
             // 
             this.panelMulti.AutoScroll = true;
-            this.panelMulti.Location = new System.Drawing.Point(332, 199);
+            this.panelMulti.Location = new System.Drawing.Point(332, 176);
             this.panelMulti.Name = "panelMulti";
-            this.panelMulti.Size = new System.Drawing.Size(848, 623);
+            this.panelMulti.Size = new System.Drawing.Size(865, 623);
             this.panelMulti.TabIndex = 7;
             // 
             // nameStatusStrip
             // 
-            this.nameStatusStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.nameStatusStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.nameStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.nameStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1});
-            this.nameStatusStrip.Location = new System.Drawing.Point(355, 172);
+            this.nameStatusStrip.Location = new System.Drawing.Point(0, 869);
             this.nameStatusStrip.Name = "nameStatusStrip";
-            this.nameStatusStrip.Size = new System.Drawing.Size(123, 25);
+            this.nameStatusStrip.Size = new System.Drawing.Size(1280, 25);
             this.nameStatusStrip.TabIndex = 0;
             this.nameStatusStrip.Text = ".";
             this.nameStatusStrip.Visible = false;
@@ -252,10 +307,11 @@
             this.panel3.Controls.Add(this.slideBtn);
             this.panel3.Controls.Add(this.multiBtn);
             this.panel3.Controls.Add(this.singleBtn);
-            this.panel3.Location = new System.Drawing.Point(1211, 199);
+            this.panel3.Location = new System.Drawing.Point(1211, 176);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(68, 624);
             this.panel3.TabIndex = 8;
+            this.panel3.Visible = false;
             // 
             // slideBtn
             // 
@@ -290,33 +346,11 @@
             this.singleBtn.UseVisualStyleBackColor = true;
             this.singleBtn.Click += new System.EventHandler(this.singleToolStripMenuItem_Click);
             // 
-            // stopBtn
-            // 
-            this.stopBtn.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopBtn.Location = new System.Drawing.Point(816, -1);
-            this.stopBtn.Name = "stopBtn";
-            this.stopBtn.Size = new System.Drawing.Size(267, 54);
-            this.stopBtn.TabIndex = 0;
-            this.stopBtn.Text = "Stop Show";
-            this.stopBtn.UseVisualStyleBackColor = true;
-            this.stopBtn.Click += new System.EventHandler(this.onOffSlider_Click);
-            // 
-            // startBtn
-            // 
-            this.startBtn.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startBtn.Location = new System.Drawing.Point(413, -1);
-            this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(267, 54);
-            this.startBtn.TabIndex = 0;
-            this.startBtn.Text = "Start Show";
-            this.startBtn.UseVisualStyleBackColor = true;
-            this.startBtn.Click += new System.EventHandler(this.onOffSlider_Click);
-            // 
             // clearCheck
             // 
             this.clearCheck.AutoSize = true;
             this.clearCheck.ForeColor = System.Drawing.Color.White;
-            this.clearCheck.Location = new System.Drawing.Point(34, 740);
+            this.clearCheck.Location = new System.Drawing.Point(34, 717);
             this.clearCheck.Name = "clearCheck";
             this.clearCheck.Size = new System.Drawing.Size(84, 21);
             this.clearCheck.TabIndex = 6;
@@ -324,33 +358,11 @@
             this.clearCheck.UseVisualStyleBackColor = true;
             this.clearCheck.CheckedChanged += new System.EventHandler(this.clearCheck_CheckedChanged);
             // 
-            // prev
-            // 
-            this.prev.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prev.Location = new System.Drawing.Point(680, -1);
-            this.prev.Name = "prev";
-            this.prev.Size = new System.Drawing.Size(68, 55);
-            this.prev.TabIndex = 9;
-            this.prev.Text = "<<";
-            this.prev.UseVisualStyleBackColor = true;
-            this.prev.Click += new System.EventHandler(this.next_Click);
-            // 
-            // next
-            // 
-            this.next.Font = new System.Drawing.Font("Roboto", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.next.Location = new System.Drawing.Point(748, -1);
-            this.next.Name = "next";
-            this.next.Size = new System.Drawing.Size(68, 55);
-            this.next.TabIndex = 9;
-            this.next.Text = ">>";
-            this.next.UseVisualStyleBackColor = true;
-            this.next.Click += new System.EventHandler(this.next_Click);
-            // 
             // clearPanelCheck
             // 
             this.clearPanelCheck.AutoSize = true;
             this.clearPanelCheck.ForeColor = System.Drawing.Color.White;
-            this.clearPanelCheck.Location = new System.Drawing.Point(149, 740);
+            this.clearPanelCheck.Location = new System.Drawing.Point(149, 717);
             this.clearPanelCheck.Name = "clearPanelCheck";
             this.clearPanelCheck.Size = new System.Drawing.Size(96, 21);
             this.clearPanelCheck.TabIndex = 6;
@@ -363,28 +375,17 @@
             this.imgList.ContextMenuStrip = this.modeContextMenuStrip;
             this.imgList.FormattingEnabled = true;
             this.imgList.ItemHeight = 16;
-            this.imgList.Location = new System.Drawing.Point(34, 199);
+            this.imgList.Location = new System.Drawing.Point(34, 176);
             this.imgList.Name = "imgList";
             this.imgList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.imgList.Size = new System.Drawing.Size(269, 532);
             this.imgList.TabIndex = 9;
-            // 
-            // exitbtn
-            // 
-            this.exitbtn.Location = new System.Drawing.Point(1192, 843);
-            this.exitbtn.Name = "exitbtn";
-            this.exitbtn.Size = new System.Drawing.Size(87, 50);
-            this.exitbtn.TabIndex = 10;
-            this.exitbtn.Text = "Exit";
-            this.exitbtn.UseVisualStyleBackColor = true;
-            this.exitbtn.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 894);
-            this.Controls.Add(this.exitbtn);
             this.Controls.Add(this.imgList);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.uploadBtn);
@@ -447,7 +448,7 @@
         private System.Windows.Forms.Button prev;
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.ListBox imgList;
-        private System.Windows.Forms.Button exitbtn;
+        private System.Windows.Forms.Button MulitpleBtn;
     }
 }
 

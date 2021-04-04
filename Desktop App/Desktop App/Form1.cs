@@ -26,21 +26,25 @@ namespace Desktop_App
         public Form1()
         {
             InitializeComponent();
+        // background: rgba
+       // background: rgba
 
-            Color mainText = Color.FromArgb(70, 175, 255);
-            Color mainBack = Color.FromArgb(45, 55, 70);
-            Color secondryBtnColor = Color.FromArgb(26, 251, 170);
+            //     Color mainText = Color.FromArgb(33, 30, 50);
+            Color mainText = Color.FromArgb(173, 111, 253);
+            Color mainBack = Color.FromArgb(57, 60, 85);
+            Color secondryBtnColor = Color.FromArgb(254, 118, 60);
             Color whiteTxt = Color.FromKnownColor(KnownColor.White);
 
             this.BackColor = Color.FromArgb(30, 40, 50);
-            colorBtn(exitbtn, Color.FromArgb(255, 86, 86), whiteTxt);
+            colorBtn(MulitpleBtn, mainText, whiteTxt);
 
             colorBtn(singleBtn, secondryBtnColor, BackColor);
             colorBtn(slideBtn, secondryBtnColor, BackColor);
             colorBtn(multiBtn, secondryBtnColor, BackColor);
+       // background: rgba(123, 72, 189, 1);
 
-            colorBtn(next, Color.FromArgb(60, 85, 111), BackColor);
-            colorBtn(prev, Color.FromArgb(60, 85, 111), BackColor);
+            colorBtn(next, Color.FromArgb(123, 72, 189), BackColor);
+            colorBtn(prev, Color.FromArgb(123, 72, 189), BackColor);
 
             colorBtn(uploadBtn, mainText, whiteTxt);
             colorBtn(startBtn, secondryBtnColor, whiteTxt);
@@ -159,6 +163,16 @@ namespace Desktop_App
 
         private void multipleShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Button btnSender = (Button)sender;
+                if (btnSender == MulitpleBtn)
+                {
+                    checkBoxSelectAll.Checked = true;
+                }
+            }
+            catch (Exception exp) { }
+
             panelMulti.Controls.Clear();
             selectedPath.Clear();
             loadSelectPath();
@@ -168,19 +182,19 @@ namespace Desktop_App
             panelMulti.Visible = true;
 
             int maxHeight = -1;
-            int x = -5, y = 0;
+            int x = 0, y = 0;
             for (int i = 0; i < selectedPath.Count; i++)
             {
                 PictureBox pic = new PictureBox();
                 pic.ImageLocation = selectedPath[i];
                 pic.Location = new Point(x, y);
                 pic.SizeMode = PictureBoxSizeMode.Zoom;
-                x += pic.Width + 5;
+                x += pic.Width + 30;
                 maxHeight = Math.Max(pic.Height, maxHeight);
-                if (x > panelMulti.Width)
+                if (x > panelMulti.Width - pic.Width)
                 {
-                    x = -5;
-                    y += maxHeight + 20;
+                    x = 0;
+                    y += maxHeight + 30;
                 }
                 panelMulti.Controls.Add(pic);
             }
