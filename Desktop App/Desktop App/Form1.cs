@@ -45,6 +45,15 @@ namespace Desktop_App
 
             colorBtn(next, Color.FromArgb(123, 72, 189), BackColor);
             colorBtn(prev, Color.FromArgb(123, 72, 189), BackColor);
+            next.Text = "";
+            prev.Text = "";
+            prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_next.png");
+            // Align the image and text on the button.
+            prev.ImageAlign = ContentAlignment.MiddleCenter;
+            next.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_pre.png");
+            // Align the image and text on the button.
+            next.ImageAlign = ContentAlignment.MiddleCenter;
+
 
             colorBtn(uploadBtn, mainText, whiteTxt);
             colorBtn(startBtn, secondryBtnColor, whiteTxt);
@@ -106,6 +115,22 @@ namespace Desktop_App
             }
         }
 
+        private void loadImgtimer_Tick(object sender, EventArgs e)
+        {
+            if (imgNum == AllPath.Count - 1 || AllPath.Count == 1)
+                imgNum = 0;
+            if (AllPath.Count != 0)
+            {
+
+                imgBox.ImageLocation = AllPath[imgNum];
+                //  nameStatusStrip.Visible = true;
+                toolStripLabel1.Text = AllPath[imgNum++].ToString();
+                toolStripLabel1.Visible = true;
+                nameStatusStrip.Visible = true;
+            }
+
+        }
+
         private void singleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nameStatusStrip.Visible = false;
@@ -132,11 +157,6 @@ namespace Desktop_App
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void slideShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelMulti.Visible = false;
@@ -144,23 +164,6 @@ namespace Desktop_App
             loadImgtimer.Start();
 
         }
-
-        private void loadImgtimer_Tick(object sender, EventArgs e)
-        {
-            if (imgNum == AllPath.Count - 1 || AllPath.Count == 1)
-                imgNum = 0;
-            if (AllPath.Count != 0)
-            {
-
-                imgBox.ImageLocation = AllPath[imgNum];
-                //  nameStatusStrip.Visible = true;
-                toolStripLabel1.Text = AllPath[imgNum++].ToString();
-                toolStripLabel1.Visible = true;
-                nameStatusStrip.Visible = true;
-            }
-
-        }
-
         private void multipleShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -186,6 +189,7 @@ namespace Desktop_App
             for (int i = 0; i < selectedPath.Count; i++)
             {
                 PictureBox pic = new PictureBox();
+           
                 pic.ImageLocation = selectedPath[i];
                 pic.Location = new Point(x, y);
                 pic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -200,6 +204,7 @@ namespace Desktop_App
             }
 
         }
+
 
         private void clearCheck_CheckedChanged(object sender, EventArgs e)
         {
@@ -221,6 +226,7 @@ namespace Desktop_App
             }
 
         }
+
 
         private void next_Click(object sender, EventArgs e)
         {
@@ -282,9 +288,11 @@ namespace Desktop_App
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
+
     }
 }
