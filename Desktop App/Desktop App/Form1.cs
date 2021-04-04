@@ -9,6 +9,7 @@ namespace Desktop_App
 
     public partial class Form1 : Form
     {
+        List<PictureBox> viewedPicBoxInMultiple = new List<PictureBox>();
 
         List<string> AllPath = new List<string>();
         List<string> selectedPath = new List<string>();
@@ -193,19 +194,30 @@ namespace Desktop_App
                 pic.ImageLocation = selectedPath[i];
                 pic.Location = new Point(x, y);
                 pic.SizeMode = PictureBoxSizeMode.Zoom;
-                x += pic.Width + 30;
+
+                    x += pic.Width + 30;
                 maxHeight = Math.Max(pic.Height, maxHeight);
                 if (x > panelMulti.Width - pic.Width)
                 {
                     x = 0;
                     y += maxHeight + 30;
                 }
-                panelMulti.Controls.Add(pic);
+                viewedPicBoxInMultiple.Add(pic);
+
+                viewedPicBoxInMultiple[viewedPicBoxInMultiple.Count - 1].Click += new System.EventHandler(picClick);
+
+                panelMulti.Controls.Add(viewedPicBoxInMultiple[viewedPicBoxInMultiple.Count - 1]);
             }
 
         }
-
-
+        private void picClick(object sender, EventArgs e)
+        {
+            PictureBox picSent =(PictureBox) sender;
+            imgBox.Visible = true;
+            panelMulti.Visible = false;
+            imgBox.Image = picSent.Image;
+            indxOfNext = imgList.SelectedIndex;
+        }
         private void clearCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (clearCheck.CheckState == CheckState.Checked)
