@@ -287,10 +287,7 @@ namespace Desktop_App
 
                 colorBtn(next, secondryBtnColor, BackColor);
                 colorBtn(prev, secondryBtnColor, BackColor);
-
-                next.Text = "";
-                prev.Text = "";
-
+                
                 prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/Wgrommet-icons_next.png");
                 prev.ImageAlign = ContentAlignment.MiddleCenter;
 
@@ -331,9 +328,6 @@ namespace Desktop_App
 
                 colorBtn(next, Color.FromArgb(123, 72, 189), BackColor);
                 colorBtn(prev, Color.FromArgb(123, 72, 189), BackColor);
-
-                next.Text = "";
-                prev.Text = "";
 
                 prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_next.png");
                 prev.ImageAlign = ContentAlignment.MiddleCenter;

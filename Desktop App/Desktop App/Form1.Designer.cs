@@ -161,9 +161,9 @@
             this.panel1.Controls.Add(this.next);
             this.panel1.Controls.Add(this.prev);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(10, 834);
+            this.panel1.Location = new System.Drawing.Point(0, 844);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1260, 50);
+            this.panel1.Size = new System.Drawing.Size(1280, 50);
             this.panel1.TabIndex = 5;
             // 
             // stopBtn
@@ -205,7 +205,6 @@
             this.next.Name = "next";
             this.next.Size = new System.Drawing.Size(85, 50);
             this.next.TabIndex = 9;
-            this.next.Text = ">>";
             this.next.UseVisualStyleBackColor = true;
             this.next.Click += new System.EventHandler(this.next_Click);
             // 
@@ -216,7 +215,6 @@
             this.prev.Name = "prev";
             this.prev.Size = new System.Drawing.Size(85, 50);
             this.prev.TabIndex = 9;
-            this.prev.Text = "<<";
             this.prev.UseVisualStyleBackColor = true;
             this.prev.Click += new System.EventHandler(this.next_Click);
             // 
@@ -239,9 +237,9 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1260, 138);
+            this.panel2.Size = new System.Drawing.Size(1280, 138);
             this.panel2.TabIndex = 0;
             // 
             // switchTheme
