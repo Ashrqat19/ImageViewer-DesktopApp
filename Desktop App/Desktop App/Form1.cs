@@ -14,64 +14,28 @@ namespace Desktop_App
         List<string> AllPath = new List<string>();
         List<string> selectedPath = new List<string>();
         int imgNum = 0;
-        void colorBtn(Button send, Color setColor, Color setTextColor)
-        {
-            send.BackColor = setColor;
-            send.ForeColor = setTextColor;
-            send.TabStop = false;
-            send.FlatStyle = FlatStyle.Flat;
-            send.FlatAppearance.BorderSize = 0;
 
+        void colorBtn(Button sender, Color setColor, Color setTextColor)
+        {
+            sender.BackColor = setColor;
+            sender.ForeColor = setTextColor;
+            sender.TabStop = false;
+            sender.FlatStyle = FlatStyle.Flat;
+            sender.FlatAppearance.BorderSize = 0;
         }
+
         int indxOfNext = 0;
+
+        Color mainText = Color.FromArgb(173, 111, 253);
+        Color mainBack = Color.FromArgb(57, 60, 85);
+        Color darkPurple =    Color.FromArgb(123, 72, 189);
+        Color secondryBtnColor = Color.FromArgb(254, 118, 60);
+
+        Color whiteTxt = Color.FromKnownColor(KnownColor.White);
         public Form1()
         {
             InitializeComponent();
-        // background: rgba
-       // background: rgba
-
-            //     Color mainText = Color.FromArgb(33, 30, 50);
-            Color mainText = Color.FromArgb(173, 111, 253);
-            Color mainBack = Color.FromArgb(57, 60, 85);
-            Color secondryBtnColor = Color.FromArgb(254, 118, 60);
-            Color whiteTxt = Color.FromKnownColor(KnownColor.White);
-
-            this.BackColor = Color.FromArgb(30, 40, 50);
-            colorBtn(MulitpleBtn, mainText, whiteTxt);
-
-            colorBtn(singleBtn, secondryBtnColor, BackColor);
-            colorBtn(slideBtn, secondryBtnColor, BackColor);
-            colorBtn(multiBtn, secondryBtnColor, BackColor);
-       // background: rgba(123, 72, 189, 1);
-
-            colorBtn(next, Color.FromArgb(123, 72, 189), BackColor);
-            colorBtn(prev, Color.FromArgb(123, 72, 189), BackColor);
-            next.Text = "";
-            prev.Text = "";
-            prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_next.png");
-            // Align the image and text on the button.
-            prev.ImageAlign = ContentAlignment.MiddleCenter;
-            next.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_pre.png");
-            // Align the image and text on the button.
-            next.ImageAlign = ContentAlignment.MiddleCenter;
-
-
-            colorBtn(uploadBtn, mainText, whiteTxt);
-            colorBtn(startBtn, secondryBtnColor, whiteTxt);
-            colorBtn(stopBtn, secondryBtnColor, whiteTxt);
-
-            label1.ForeColor = mainText;
-            label2.ForeColor = mainText;
-            label3.ForeColor = mainText;
-
-            panel1.BackColor = mainBack;
-            panel2.BackColor = mainBack;
-            panel3.BackColor = Color.FromArgb(30, 40, 50);
-            toolStripLabel1.BackColor = Color.FromArgb(30, 40, 50);
-            nameStatusStrip.BackColor = Color.FromArgb(30, 40, 50);
-            toolStripLabel1.ForeColor = mainText;
-            exitToolStripMenuItem.BackColor = Color.FromArgb(255, 86, 86);
-            exitToolStripMenuItem.ForeColor = whiteTxt;
+            switchTheme.Checked = false;
 
         }
 
@@ -125,7 +89,7 @@ namespace Desktop_App
 
                 imgBox.ImageLocation = AllPath[imgNum];
                 //  nameStatusStrip.Visible = true;
-                toolStripLabel1.Text = AllPath[imgNum++].ToString();
+                toolStripLabel1.Text =Path.GetFileName( AllPath[imgNum++].ToString());
                 toolStripLabel1.Visible = true;
                 nameStatusStrip.Visible = true;
             }
@@ -167,23 +131,28 @@ namespace Desktop_App
         }
         private void multipleShowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            selectedPath.Clear();
+
+                try
             {
                 Button btnSender = (Button)sender;
                 if (btnSender == MulitpleBtn)
                 {
+
                     checkBoxSelectAll.Checked = true;
                 }
-            }
-            catch (Exception exp) { }
+            }            catch (Exception exp) { }
 
             panelMulti.Controls.Clear();
-            selectedPath.Clear();
             loadSelectPath();
             nameStatusStrip.Visible = false;
             loadImgtimer.Stop();
             imgBox.Visible = false;
             panelMulti.Visible = true;
+
+
+      
+
 
             int maxHeight = -1;
             int x = 0, y = 0;
@@ -243,7 +212,7 @@ namespace Desktop_App
         private void next_Click(object sender, EventArgs e)
         {
             nameStatusStrip.Visible = false;
-
+            loadImgtimer.Stop();
             Button btnSender = (Button)sender;
             if (btnSender == next)
             {
@@ -306,5 +275,97 @@ namespace Desktop_App
             Application.Exit();
         }
 
+        private void switchTheme_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (switchTheme.Checked == true)
+            {
+                this.BackColor = whiteTxt;
+                colorBtn(MulitpleBtn, mainText, whiteTxt);
+                switchTheme.ForeColor = whiteTxt;
+
+
+                colorBtn(next, secondryBtnColor, BackColor);
+                colorBtn(prev, secondryBtnColor, BackColor);
+
+                next.Text = "";
+                prev.Text = "";
+
+                prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/Wgrommet-icons_next.png");
+                prev.ImageAlign = ContentAlignment.MiddleCenter;
+
+                next.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/Wgrommet-icons_next-1.png");
+                next.ImageAlign = ContentAlignment.MiddleCenter;
+
+
+                colorBtn(uploadBtn, darkPurple, whiteTxt);
+                colorBtn(startBtn, darkPurple, whiteTxt);
+                colorBtn(stopBtn, darkPurple, whiteTxt);
+
+                label1.ForeColor = whiteTxt;
+                label2.ForeColor = whiteTxt;
+
+                checkBoxSelectAll.ForeColor = mainBack;
+                clearCheck.ForeColor = mainBack;
+                clearPanelCheck.ForeColor = mainBack;
+  
+                label3.ForeColor = whiteTxt;
+                panel2.BackColor = darkPurple;
+                panel1.BackColor = whiteTxt;
+
+                //panel1.BackColor = mainBack;
+                //panel2.BackColor = mainBack;
+                //panel3.BackColor = Color.FromArgb(30, 40, 50);
+                toolStripLabel1.ForeColor = darkPurple;
+            }
+            else
+            {
+
+                this.BackColor = Color.FromArgb(30, 40, 50);
+                colorBtn(MulitpleBtn, mainText, whiteTxt);
+                switchTheme.ForeColor = whiteTxt;
+
+                colorBtn(singleBtn, secondryBtnColor, BackColor);
+                colorBtn(slideBtn, secondryBtnColor, BackColor);
+                colorBtn(multiBtn, secondryBtnColor, BackColor);
+
+                colorBtn(next, Color.FromArgb(123, 72, 189), BackColor);
+                colorBtn(prev, Color.FromArgb(123, 72, 189), BackColor);
+
+                next.Text = "";
+                prev.Text = "";
+
+                prev.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_next.png");
+                prev.ImageAlign = ContentAlignment.MiddleCenter;
+
+                next.Image = Image.FromFile("C:/Users/Electronica Care/Source/Repos/ImageViewer-DesktopApp-/Desktop App/grommet-icons_pre.png");
+                next.ImageAlign = ContentAlignment.MiddleCenter;
+
+
+                colorBtn(uploadBtn, mainText, whiteTxt);
+                colorBtn(startBtn, secondryBtnColor, whiteTxt);
+                colorBtn(stopBtn, secondryBtnColor, whiteTxt);
+
+                label1.ForeColor = mainText;
+                label2.ForeColor = mainText;
+                label3.ForeColor = mainText;
+
+                checkBoxSelectAll.ForeColor = whiteTxt;
+                clearCheck.ForeColor = whiteTxt;
+                clearPanelCheck.ForeColor = whiteTxt;
+
+                panel1.BackColor = mainBack;
+                panel2.BackColor = mainBack;
+                panel3.BackColor = Color.FromArgb(30, 40, 50);
+                toolStripLabel1.BackColor = Color.FromArgb(30, 40, 50);
+                nameStatusStrip.BackColor = Color.FromArgb(30, 40, 50);
+                toolStripLabel1.ForeColor = mainText;
+                exitToolStripMenuItem.BackColor = Color.FromArgb(255, 86, 86);
+                exitToolStripMenuItem.ForeColor = whiteTxt;
+
+            }
+        }
+
+       
     }
 }

@@ -50,6 +50,7 @@
             this.prev = new System.Windows.Forms.Button();
             this.checkBoxSelectAll = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.switchTheme = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,21 +94,21 @@
             // singleToolStripMenuItem
             // 
             this.singleToolStripMenuItem.Name = "singleToolStripMenuItem";
-            this.singleToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.singleToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.singleToolStripMenuItem.Text = "Single";
             this.singleToolStripMenuItem.Click += new System.EventHandler(this.singleToolStripMenuItem_Click);
             // 
             // slideShowToolStripMenuItem
             // 
             this.slideShowToolStripMenuItem.Name = "slideShowToolStripMenuItem";
-            this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.slideShowToolStripMenuItem.Text = "SlideShow";
             this.slideShowToolStripMenuItem.Click += new System.EventHandler(this.slideShowToolStripMenuItem_Click);
             // 
             // multipleShowToolStripMenuItem
             // 
             this.multipleShowToolStripMenuItem.Name = "multipleShowToolStripMenuItem";
-            this.multipleShowToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.multipleShowToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.multipleShowToolStripMenuItem.Text = "MultipleShow";
             this.multipleShowToolStripMenuItem.Click += new System.EventHandler(this.multipleShowToolStripMenuItem_Click);
             // 
@@ -160,9 +161,9 @@
             this.panel1.Controls.Add(this.next);
             this.panel1.Controls.Add(this.prev);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 844);
+            this.panel1.Location = new System.Drawing.Point(10, 834);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 50);
+            this.panel1.Size = new System.Drawing.Size(1260, 50);
             this.panel1.TabIndex = 5;
             // 
             // stopBtn
@@ -233,20 +234,34 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightBlue;
+            this.panel2.Controls.Add(this.switchTheme);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(10, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1280, 138);
+            this.panel2.Size = new System.Drawing.Size(1260, 138);
             this.panel2.TabIndex = 0;
+            // 
+            // switchTheme
+            // 
+            this.switchTheme.AutoSize = true;
+            this.switchTheme.Checked = true;
+            this.switchTheme.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.switchTheme.Location = new System.Drawing.Point(1171, 26);
+            this.switchTheme.Name = "switchTheme";
+            this.switchTheme.Size = new System.Drawing.Size(106, 21);
+            this.switchTheme.TabIndex = 4;
+            this.switchTheme.Text = "Light Theme";
+            this.switchTheme.UseVisualStyleBackColor = true;
+            this.switchTheme.CheckedChanged += new System.EventHandler(this.switchTheme_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 112);
+            this.label1.Location = new System.Drawing.Point(30, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 0;
@@ -256,7 +271,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(30, 89);
+            this.label2.Location = new System.Drawing.Point(30, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 19);
             this.label2.TabIndex = 1;
@@ -267,7 +282,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 28F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label3.Location = new System.Drawing.Point(23, 26);
+            this.label3.Location = new System.Drawing.Point(23, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(314, 57);
             this.label3.TabIndex = 2;
@@ -448,6 +463,7 @@
         private System.Windows.Forms.Button next;
         private System.Windows.Forms.ListBox imgList;
         private System.Windows.Forms.Button MulitpleBtn;
+        private System.Windows.Forms.CheckBox switchTheme;
     }
 }
 
